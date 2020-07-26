@@ -117,3 +117,24 @@ function devide(a: number, b: number): number {
 const multiple = function (a: number, b: number): number {
   return a * b;
 };
+
+// Void and Never
+// void - will not return anything
+// never - if we truly know that a function will not return anything ever
+const logger = (message: string): void => {
+  // return nothing, but can return null or undefined
+  throw new Error(message);
+};
+
+// Destructuring with Annotation
+const todaysWeather = {
+  date: new Date(),
+  weather: 'sunny',
+};
+
+const logWeather = ({ date, weather }: { date: Date; weather: string }): void => {
+  console.log(date);
+  console.log(weather);
+};
+
+logWeather(todaysWeather);
