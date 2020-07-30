@@ -13,30 +13,31 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NumbersCollection = void 0;
+exports.StringsCollection = void 0;
 var Sorter_1 = require("./Sorter");
-var NumbersCollection = /** @class */ (function (_super) {
-    __extends(NumbersCollection, _super);
-    function NumbersCollection(data) {
+var StringsCollection = /** @class */ (function (_super) {
+    __extends(StringsCollection, _super);
+    function StringsCollection(data) {
         var _this = _super.call(this) || this;
         _this.data = data;
         return _this;
     }
-    Object.defineProperty(NumbersCollection.prototype, "length", {
-        // Reference it as .length instead of invoking a function
+    Object.defineProperty(StringsCollection.prototype, "length", {
         get: function () {
             return this.data.length;
         },
         enumerable: false,
         configurable: true
     });
-    NumbersCollection.prototype.swap = function (leftIndex, rightIndex) {
+    StringsCollection.prototype.compare = function (leftIndex, rightIndex) {
+        return this.data[leftIndex].toLocaleLowerCase() > this.data[rightIndex].toLocaleLowerCase();
+    };
+    StringsCollection.prototype.swap = function (leftIndex, rightIndex) {
         var _a;
-        _a = [this.data[rightIndex], this.data[leftIndex]], this.data[leftIndex] = _a[0], this.data[rightIndex] = _a[1];
+        var characters = this.data.split('');
+        _a = [characters[rightIndex], characters[leftIndex]], characters[leftIndex] = _a[0], characters[rightIndex] = _a[1];
+        this.data = characters.join('');
     };
-    NumbersCollection.prototype.compare = function (leftIndex, rightIndex) {
-        return this.data[leftIndex] > this.data[rightIndex];
-    };
-    return NumbersCollection;
+    return StringsCollection;
 }(Sorter_1.Sorter));
-exports.NumbersCollection = NumbersCollection;
+exports.StringsCollection = StringsCollection;
